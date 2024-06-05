@@ -1,7 +1,18 @@
-import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack } from "@chakra-ui/react";
+import { useState } from "react";
+import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { FaExclamationTriangle, FaTrash, FaEye } from "react-icons/fa";
 
 const Index = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <Container maxW="container.xl" py={10}>
       <VStack spacing={4} align="stretch">
@@ -23,13 +34,13 @@ const Index = () => {
               <Td>€250.00</Td>
               <Td>
                 <HStack spacing={2}>
-                  <Badge colorScheme="blue">empfangen</Badge>
+                  <Badge colorScheme="blue">receive</Badge>
                   <Badge colorScheme="red">Action Required</Badge>
                 </HStack>
               </Td>
               <Td><Checkbox isChecked /></Td>
               <Td>
-                <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} mr={2} />
+                <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} mr={2} onClick={openModal} />
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
                 <IconButton aria-label="View" icon={<FaEye />} />
               </Td>
@@ -38,7 +49,7 @@ const Index = () => {
               <Td>2</Td>
               <Td>Jane Smith</Td>
               <Td>€150.00</Td>
-              <Td><Badge colorScheme="green">übertragen</Badge></Td>
+              <Td><Badge colorScheme="green">paid</Badge></Td>
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
@@ -49,7 +60,7 @@ const Index = () => {
               <Td>3</Td>
               <Td>Michael Johnson</Td>
               <Td>€350.00</Td>
-              <Td><Badge colorScheme="yellow">kontiert</Badge></Td>
+              <Td><Badge colorScheme="yellow">pending</Badge></Td>
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
@@ -60,7 +71,7 @@ const Index = () => {
               <Td>4</Td>
               <Td>Sarah Lee</Td>
               <Td>€450.00</Td>
-              <Td><Badge colorScheme="green">übertragen</Badge></Td>
+              <Td><Badge colorScheme="green">paid</Badge></Td>
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
@@ -71,7 +82,7 @@ const Index = () => {
               <Td>5</Td>
               <Td>David Kim</Td>
               <Td>€550.00</Td>
-              <Td><Badge colorScheme="green">übertragen</Badge></Td>
+              <Td><Badge colorScheme="green">paid</Badge></Td>
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
@@ -81,6 +92,62 @@ const Index = () => {
           </Tbody>
         </Table>
       </VStack>
+
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Kontierungstempel</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <FormControl>
+              <FormLabel>Datum:</FormLabel>
+              <Input type="text" />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Konto:</FormLabel>
+              <Input type="text" />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Konstellee:</FormLabel>
+              <Input type="text" />
+            </FormControl>
+            <FormControl>
+              <FormLabel>EP/VP:</FormLabel>
+              <Input type="text" />
+            </FormControl>
+            <FormControl>
+              <FormLabel>VB:</FormLabel>
+              <Input type="text" />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Belegtext:</FormLabel>
+              <Input type="text" />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Kommentar:</FormLabel>
+              <Input type="text" />
+            </FormControl>
+            <FormControl>
+              <FormLabel>fällig am:</FormLabel>
+              <Input type="text" />
+            </FormControl>
+            <FormControl>
+              <FormLabel>gebucht am:</FormLabel>
+              <Input type="text" />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Ticket Number:</FormLabel>
+              <Input type="text" />
+            </FormControl>
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={closeModal}>
+              Save
+            </Button>
+            <Button variant="ghost" onClick={closeModal}>Cancel</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Container>
   );
 };
