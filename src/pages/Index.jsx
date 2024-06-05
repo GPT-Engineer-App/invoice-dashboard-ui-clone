@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, DrawerFooter, Button } from "@chakra-ui/react";
 import { FaExclamationTriangle, FaTrash, FaEye } from "react-icons/fa";
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -11,6 +12,14 @@ const Index = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const openDrawer = () => {
+    setIsDrawerOpen(true);
+  };
+
+  const closeDrawer = () => {
+    setIsDrawerOpen(false);
   };
 
   return (
@@ -42,7 +51,7 @@ const Index = () => {
               <Td>
                 <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} mr={2} onClick={openModal} />
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
-                <IconButton aria-label="View" icon={<FaEye />} />
+                <IconButton aria-label="View" icon={<FaEye />} onClick={openDrawer} />
               </Td>
             </Tr>
             <Tr>
@@ -53,7 +62,7 @@ const Index = () => {
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
-                <IconButton aria-label="View" icon={<FaEye />} />
+                <IconButton aria-label="View" icon={<FaEye />} onClick={openDrawer} />
               </Td>
             </Tr>
             <Tr>
@@ -64,7 +73,7 @@ const Index = () => {
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
-                <IconButton aria-label="View" icon={<FaEye />} />
+                <IconButton aria-label="View" icon={<FaEye />} onClick={openDrawer} />
               </Td>
             </Tr>
             <Tr>
@@ -75,7 +84,7 @@ const Index = () => {
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
-                <IconButton aria-label="View" icon={<FaEye />} />
+                <IconButton aria-label="View" icon={<FaEye />} onClick={openDrawer} />
               </Td>
             </Tr>
             <Tr>
@@ -86,7 +95,7 @@ const Index = () => {
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
-                <IconButton aria-label="View" icon={<FaEye />} />
+                <IconButton aria-label="View" icon={<FaEye />} onClick={openDrawer} />
               </Td>
             </Tr>
           </Tbody>
@@ -148,6 +157,22 @@ const Index = () => {
           </ModalFooter>
         </ModalContent>
       </Modal>
+
+      <Drawer isOpen={isDrawerOpen} placement="right" onClose={closeDrawer} size="md">
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Slide Panel</DrawerHeader>
+          <DrawerBody>
+            {/* Content for the slide panel */}
+          </DrawerBody>
+          <DrawerFooter>
+            <Button variant="outline" mr={3} onClick={closeDrawer}>
+              Close
+            </Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
     </Container>
   );
 };
