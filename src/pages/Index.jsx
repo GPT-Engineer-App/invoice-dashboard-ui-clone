@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
-import { FaExclamationTriangle, FaTrash, FaEye } from "react-icons/fa";
+import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input, Flex, Spacer, Text } from "@chakra-ui/react";
+import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort } from "react-icons/fa";
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,6 +16,14 @@ const Index = () => {
   return (
     <Container maxW="container.xl" py={10}>
       <VStack spacing={4} align="stretch">
+        <Flex w="100%" align="center" mb={4}>
+          <Text fontSize="2xl" fontWeight="bold">Invoice Dashboard</Text>
+          <Spacer />
+          <HStack spacing={4}>
+            <Button leftIcon={<FaFilter />} colorScheme="teal" variant="solid">Filter</Button>
+            <Button leftIcon={<FaSort />} colorScheme="teal" variant="solid">Sort</Button>
+          </HStack>
+        </Flex>
         <Table variant="simple" size="lg">
           <Thead>
             <Tr>
