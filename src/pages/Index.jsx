@@ -1,4 +1,5 @@
-import { useState, useColorModeValue } from "react";
+import { useState } from "react";
+import { useColorModeValue } from "@chakra-ui/react";
 import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { FaExclamationTriangle, FaTrash, FaEye } from "react-icons/fa";
 
@@ -29,7 +30,7 @@ const Index = () => {
           </Thead>
           <Tbody>
             {[...Array(5)].map((_, index) => (
-              <Tr key={index} bg={index % 2 === 0 ? useColorModeValue("white", "gray.800") : useColorModeValue("gray.100", "gray.700")}>
+              <Tr key={index} bg={index % 2 === 0 ? useColorModeValue("white", "gray.50") : useColorModeValue("gray.100", "gray.700")}>
                 <Td>{index + 1}</Td>
                 <Td>{["John Doe", "Jane Smith", "Michael Johnson", "Sarah Lee", "David Kim"][index]}</Td>
                 <Td>{["€250.00", "€150.00", "€350.00", "€450.00", "€550.00"][index]}</Td>
