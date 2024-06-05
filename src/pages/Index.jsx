@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input, Flex, Spacer, Text, Box, Link } from "@chakra-ui/react";
+import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input, Flex, Spacer, Text, Box } from "@chakra-ui/react";
 import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort } from "react-icons/fa";
 
 const Index = () => {
@@ -16,15 +16,10 @@ const Index = () => {
   return (
     <Container maxW="container.xl" py={10}>
       <Box bg="gray.100" p={4} mb={4} borderRadius="md" boxShadow="md">
-        <Flex justify="space-between" align="center" wrap="wrap">
+        <Flex justify="flex-end" align="center" wrap="wrap">
           <HStack spacing={4}>
             <Button leftIcon={<FaFilter />} colorScheme="teal" variant="solid">Filter</Button>
             <Button leftIcon={<FaSort />} colorScheme="teal" variant="solid">Sort</Button>
-          </HStack>
-          <HStack spacing={4}>
-            <Link href="#" color="teal.500" fontWeight="bold">Home</Link>
-            <Link href="#" color="teal.500" fontWeight="bold">About</Link>
-            <Link href="#" color="teal.500" fontWeight="bold">Contact</Link>
           </HStack>
         </Flex>
       </Box>
