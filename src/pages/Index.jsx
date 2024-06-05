@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
-import { FaExclamationTriangle, FaTrash, FaEye } from "react-icons/fa";
+import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input, Flex, Spacer, Text, Box, Link } from "@chakra-ui/react";
+import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort } from "react-icons/fa";
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,7 +15,28 @@ const Index = () => {
 
   return (
     <Container maxW="container.xl" py={10}>
+      <Box bg="gray.100" p={4} mb={4} borderRadius="md" boxShadow="md">
+        <Flex justify="space-between" align="center" wrap="wrap">
+          <HStack spacing={4}>
+            <Button leftIcon={<FaFilter />} colorScheme="teal" variant="solid">Filter</Button>
+            <Button leftIcon={<FaSort />} colorScheme="teal" variant="solid">Sort</Button>
+          </HStack>
+          <HStack spacing={4}>
+            <Link href="#" color="teal.500" fontWeight="bold">Home</Link>
+            <Link href="#" color="teal.500" fontWeight="bold">About</Link>
+            <Link href="#" color="teal.500" fontWeight="bold">Contact</Link>
+          </HStack>
+        </Flex>
+      </Box>
       <VStack spacing={4} align="stretch">
+        <Flex w="100%" align="center" mb={4} mt={4}>
+          <Text fontSize="2xl" fontWeight="bold">Invoice Dashboard</Text>
+          <Spacer />
+          <HStack spacing={4}>
+            <Button leftIcon={<FaFilter />} colorScheme="teal" variant="solid">Filter</Button>
+            <Button leftIcon={<FaSort />} colorScheme="teal" variant="solid">Sort</Button>
+          </HStack>
+        </Flex>
         <Table variant="simple" size="lg">
           <Thead>
             <Tr>
