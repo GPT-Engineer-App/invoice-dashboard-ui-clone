@@ -1,4 +1,4 @@
-import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack } from "@chakra-ui/react";
+import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack } from "@chakra-ui/react";
 import { FaExclamationTriangle, FaTrash, FaEye } from "react-icons/fa";
 
 const Index = () => {
@@ -21,8 +21,12 @@ const Index = () => {
               <Td>1</Td>
               <Td>John Doe</Td>
               <Td>€250.00</Td>
-              <Td><Badge colorScheme="blue">receive</Badge></Td>
-              <Td><Badge colorScheme="red">Action Required</Badge></Td>
+              <Td>
+                <HStack spacing={2}>
+                  <Badge colorScheme="blue">receive</Badge>
+                  <Badge colorScheme="red">Action Required</Badge>
+                </HStack>
+              </Td>
               <Td><Checkbox isChecked /></Td>
               <Td>
                 <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} mr={2} />
