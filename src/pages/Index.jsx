@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useColorModeValue } from "react";
 import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { FaExclamationTriangle, FaTrash, FaEye } from "react-icons/fa";
 
@@ -28,67 +28,28 @@ const Index = () => {
             </Tr>
           </Thead>
           <Tbody>
-            <Tr>
-              <Td>1</Td>
-              <Td>John Doe</Td>
-              <Td>€250.00</Td>
-              <Td>
-                <HStack spacing={2}>
-                  <Badge colorScheme="blue">receive</Badge>
-                  <Badge colorScheme="red">Action Required</Badge>
-                </HStack>
-              </Td>
-              <Td><Checkbox isChecked /></Td>
-              <Td>
-                <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} mr={2} onClick={openModal} />
-                <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
-                <IconButton aria-label="View" icon={<FaEye />} />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>2</Td>
-              <Td>Jane Smith</Td>
-              <Td>€150.00</Td>
-              <Td><Badge colorScheme="green">paid</Badge></Td>
-              <Td><Checkbox /></Td>
-              <Td>
-                <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
-                <IconButton aria-label="View" icon={<FaEye />} />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>3</Td>
-              <Td>Michael Johnson</Td>
-              <Td>€350.00</Td>
-              <Td><Badge colorScheme="yellow">pending</Badge></Td>
-              <Td><Checkbox /></Td>
-              <Td>
-                <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
-                <IconButton aria-label="View" icon={<FaEye />} />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>4</Td>
-              <Td>Sarah Lee</Td>
-              <Td>€450.00</Td>
-              <Td><Badge colorScheme="green">paid</Badge></Td>
-              <Td><Checkbox /></Td>
-              <Td>
-                <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
-                <IconButton aria-label="View" icon={<FaEye />} />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>5</Td>
-              <Td>David Kim</Td>
-              <Td>€550.00</Td>
-              <Td><Badge colorScheme="green">paid</Badge></Td>
-              <Td><Checkbox /></Td>
-              <Td>
-                <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
-                <IconButton aria-label="View" icon={<FaEye />} />
-              </Td>
-            </Tr>
+            {[...Array(5)].map((_, index) => (
+              <Tr key={index} bg={index % 2 === 0 ? useColorModeValue("white", "gray.800") : useColorModeValue("gray.100", "gray.700")}>
+                <Td>{index + 1}</Td>
+                <Td>{["John Doe", "Jane Smith", "Michael Johnson", "Sarah Lee", "David Kim"][index]}</Td>
+                <Td>{["€250.00", "€150.00", "€350.00", "€450.00", "€550.00"][index]}</Td>
+                <Td>
+                  <HStack spacing={2}>
+                    {index === 0 && <Badge colorScheme="blue">receive</Badge>}
+                    {index === 0 && <Badge colorScheme="red">Action Required</Badge>}
+                    {index === 1 && <Badge colorScheme="green">paid</Badge>}
+                    {index === 2 && <Badge colorScheme="yellow">pending</Badge>}
+                    {index > 2 && <Badge colorScheme="green">paid</Badge>}
+                  </HStack>
+                </Td>
+                <Td><Checkbox isChecked={index === 0} /></Td>
+                <Td>
+                  {index === 0 && <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} mr={2} onClick={openModal} />}
+                  <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
+                  <IconButton aria-label="View" icon={<FaEye />} />
+                </Td>
+              </Tr>
+            ))}
           </Tbody>
         </Table>
       </VStack>
