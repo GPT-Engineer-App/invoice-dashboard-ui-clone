@@ -23,7 +23,7 @@ const Index = () => {
               <Td>€250.00</Td>
               <Td>
                 <HStack spacing={2}>
-                  <Badge colorScheme="blue">receive</Badge>
+                  <Badge colorScheme="blue">empfangen</Badge>
                   <Badge colorScheme="red">Action Required</Badge>
                 </HStack>
               </Td>
@@ -38,7 +38,7 @@ const Index = () => {
               <Td>2</Td>
               <Td>Jane Smith</Td>
               <Td>€150.00</Td>
-              <Td><Badge colorScheme="green">paid</Badge></Td>
+              <Td><Badge colorScheme="green">übertragen</Badge></Td>
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
@@ -49,7 +49,7 @@ const Index = () => {
               <Td>3</Td>
               <Td>Michael Johnson</Td>
               <Td>€350.00</Td>
-              <Td><Badge colorScheme="yellow">pending</Badge></Td>
+              <Td><Badge colorScheme="yellow">kontiert</Badge></Td>
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
@@ -60,7 +60,7 @@ const Index = () => {
               <Td>4</Td>
               <Td>Sarah Lee</Td>
               <Td>€450.00</Td>
-              <Td><Badge colorScheme="green">paid</Badge></Td>
+              <Td><Badge colorScheme="green">übertragen</Badge></Td>
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
@@ -71,7 +71,7 @@ const Index = () => {
               <Td>5</Td>
               <Td>David Kim</Td>
               <Td>€550.00</Td>
-              <Td><Badge colorScheme="green">paid</Badge></Td>
+              <Td><Badge colorScheme="green">übertragen</Badge></Td>
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
