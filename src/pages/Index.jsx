@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input, Flex, Spacer, Text, SimpleGrid } from "@chakra-ui/react";
-import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort } from "react-icons/fa";
+import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort, FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -145,12 +145,15 @@ const Index = () => {
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
               <FormControl>
                 <FormLabel>eingegangen_am:</FormLabel>
-                <DatePicker
-                  selected={eingegangenAm}
-                  onChange={(date) => setEingegangenAm(date)}
-                  placeholderText="Pick a date"
-                  styles={customDatePickerStyles}
-                />
+                <HStack>
+                  <FaCalendarAlt color="#A0AEC0" />
+                  <DatePicker
+                    selected={eingegangenAm}
+                    onChange={(date) => setEingegangenAm(date)}
+                    placeholderText="Pick a date"
+                    styles={customDatePickerStyles}
+                  />
+                </HStack>
               </FormControl>
               <FormControl>
                 <FormLabel>Konto:</FormLabel>
@@ -178,21 +181,27 @@ const Index = () => {
               </FormControl>
               <FormControl>
                 <FormLabel>fällig_am:</FormLabel>
-                <DatePicker
-                  selected={faelligAm}
-                  onChange={(date) => setFaelligAm(date)}
-                  placeholderText="Pick a date"
-                  styles={customDatePickerStyles}
-                />
+                <HStack>
+                  <FaCalendarAlt color="#A0AEC0" />
+                  <DatePicker
+                    selected={faelligAm}
+                    onChange={(date) => setFaelligAm(date)}
+                    placeholderText="Pick a date"
+                    styles={customDatePickerStyles}
+                  />
+                </HStack>
               </FormControl>
               <FormControl>
                 <FormLabel>gebucht:</FormLabel>
-                <DatePicker
-                  selected={gebucht}
-                  onChange={(date) => setGebucht(date)}
-                  placeholderText="Pick a date"
-                  styles={customDatePickerStyles}
-                />
+                <HStack>
+                  <FaCalendarAlt color="#A0AEC0" />
+                  <DatePicker
+                    selected={gebucht}
+                    onChange={(date) => setGebucht(date)}
+                    placeholderText="Pick a date"
+                    styles={customDatePickerStyles}
+                  />
+                </HStack>
               </FormControl>
               <FormControl>
                 <FormLabel>Ticket Number:</FormLabel>
