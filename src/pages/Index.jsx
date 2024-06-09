@@ -104,7 +104,7 @@ const Index = () => {
 
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent minW={{ base: "90%", md: "75%" }} mx="auto">
           <ModalHeader>Kontierungstempel</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
