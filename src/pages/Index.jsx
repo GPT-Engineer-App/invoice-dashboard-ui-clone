@@ -61,9 +61,9 @@ const Index = () => {
               </Td>
               <Td><Checkbox isChecked /></Td>
               <Td>
-                <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} mr={2} onClick={openModal} />
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
                 <IconButton aria-label="View" icon={<FaEye />} />
+                <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} mr={2} onClick={openModal} />
               </Td>
             </Tr>
             <Tr>
