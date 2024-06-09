@@ -160,7 +160,7 @@ const Index = () => {
                 <Input type="text" />
               </FormControl>
               <FormControl>
-                <FormLabel>Konstellee:</FormLabel>
+                <FormLabel>Kontostelle:</FormLabel>
                 <Input type="text" />
               </FormControl>
               <FormControl>
