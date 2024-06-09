@@ -23,8 +23,14 @@ const customDatePickerStyles = {
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(true);
+  const [eingegangenAm, setEingegangenAm] = useState(null);
+  const [faelligAm, setFaelligAm] = useState(null);
+  const [gebucht, setGebucht] = useState(null);
 
   const openModal = () => {
+    setEingegangenAm(null);
+    setFaelligAm(null);
+    setGebucht(null);
     setIsModalOpen(true);
   };
 
@@ -140,8 +146,8 @@ const Index = () => {
               <FormControl>
                 <FormLabel>eingegangen_am:</FormLabel>
                 <DatePicker
-                  selected={new Date()}
-                  onChange={(date) => console.log(date)}
+                  selected={eingegangenAm}
+                  onChange={(date) => setEingegangenAm(date)}
                   placeholderText="Pick a date"
                   styles={customDatePickerStyles}
                 />
@@ -173,8 +179,8 @@ const Index = () => {
               <FormControl>
                 <FormLabel>fällig_am:</FormLabel>
                 <DatePicker
-                  selected={new Date()}
-                  onChange={(date) => console.log(date)}
+                  selected={faelligAm}
+                  onChange={(date) => setFaelligAm(date)}
                   placeholderText="Pick a date"
                   styles={customDatePickerStyles}
                 />
@@ -182,8 +188,8 @@ const Index = () => {
               <FormControl>
                 <FormLabel>gebucht:</FormLabel>
                 <DatePicker
-                  selected={new Date()}
-                  onChange={(date) => console.log(date)}
+                  selected={gebucht}
+                  onChange={(date) => setGebucht(date)}
                   placeholderText="Pick a date"
                   styles={customDatePickerStyles}
                 />
