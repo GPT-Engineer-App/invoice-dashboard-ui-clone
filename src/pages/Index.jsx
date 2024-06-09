@@ -4,6 +4,24 @@ import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort } from "react-i
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+const customDatePickerStyles = {
+  control: (provided) => ({
+    ...provided,
+    borderRadius: "8px",
+    borderColor: "#CBD5E0",
+    boxShadow: "none",
+    "&:hover": {
+      borderColor: "#3182CE",
+    },
+  }),
+  placeholder: (provided) => ({
+    ...provided,
+    color: "#A0AEC0",
+  }),
+};
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(true);
@@ -123,7 +141,12 @@ const Index = () => {
   <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
     <FormControl>
       <FormLabel>eingegangen_am:</FormLabel>
-      <DatePicker selected={new Date()} onChange={(date) => console.log(date)} />
+      <DatePicker
+        selected={new Date()}
+        onChange={(date) => console.log(date)}
+        placeholderText="Pick a date"
+        styles={customDatePickerStyles}
+      />
     </FormControl>
     <FormControl>
       <FormLabel>Konto:</FormLabel>
@@ -151,11 +174,21 @@ const Index = () => {
     </FormControl>
     <FormControl>
       <FormLabel>fällig_am:</FormLabel>
-      <DatePicker selected={new Date()} onChange={(date) => console.log(date)} />
+      <DatePicker
+        selected={new Date()}
+        onChange={(date) => console.log(date)}
+        placeholderText="Pick a date"
+        styles={customDatePickerStyles}
+      />
     </FormControl>
     <FormControl>
       <FormLabel>gebucht:</FormLabel>
-      <DatePicker selected={new Date()} onChange={(date) => console.log(date)} />
+      <DatePicker
+        selected={new Date()}
+        onChange={(date) => console.log(date)}
+        placeholderText="Pick a date"
+        styles={customDatePickerStyles}
+      />
     </FormControl>
     <FormControl>
       <FormLabel>Ticket Number:</FormLabel>
