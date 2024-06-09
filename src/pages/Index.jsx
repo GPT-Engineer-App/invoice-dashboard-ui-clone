@@ -112,10 +112,7 @@ const Index = () => {
         <ModalContent 
           minW={{ base: "90%", md: "75%" }} 
           mx="auto" 
-          my="auto" 
-          display="flex" 
-          alignItems="center" 
-          justifyContent="center"
+          my="auto"
         >
           <ModalHeader>Kontierungstempel</ModalHeader>
           <ModalCloseButton />
