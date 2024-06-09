@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input, Flex, Spacer, Text, SimpleGrid } from "@chakra-ui/react";
-import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort, FaCalendarAlt } from "react-icons/fa";
+import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerCloseButton, DrawerBody, DrawerFooter, Button, FormControl, FormLabel, Input, Flex, Spacer, Text, SimpleGrid, Box, useDisclosure, Progress } from "@chakra-ui/react";
+import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort, FaCalendarAlt, FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -21,26 +21,43 @@ const customDatePickerStyles = {
 };
 
 const Index = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [step, setStep] = useState(0);
   const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(true);
   const [eingegangenAm, setEingegangenAm] = useState(null);
   const [faelligAm, setFaelligAm] = useState(null);
   const [gebucht, setGebucht] = useState(null);
 
-  const openModal = () => {
+  const steps = [
+    { label: "eingegangen_am", type: "date", value: eingegangenAm, setValue: setEingegangenAm },
+    { label: "Konto", type: "text" },
+    { label: "Kontostelle", type: "text" },
+    { label: "EP/VP", type: "text" },
+    { label: "VB", type: "text" },
+    { label: "Belegtext", type: "text" },
+    { label: "Kommentar", type: "text" },
+    { label: "fällig_am", type: "date", value: faelligAm, setValue: setFaelligAm },
+    { label: "gebucht", type: "date", value: gebucht, setValue: setGebucht },
+    { label: "Ticket Number", type: "text" },
+  ];
+
+  const nextStep = () => setStep((prev) => Math.min(prev + 1, steps.length - 1));
+  const prevStep = () => setStep((prev) => Math.max(prev - 1, 0));
+
+  const openDrawer = () => {
     setEingegangenAm(null);
     setFaelligAm(null);
     setGebucht(null);
-    setIsModalOpen(true);
+    setStep(0);
+    onOpen();
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeDrawer = () => {
+    onClose();
   };
 
   return (
     <Container maxW="container.xl" py={10}>
-      
       <VStack spacing={4} align="stretch">
         <Flex w="100%" align="center" mb={4} mt={4}>
           <Text fontSize="2xl" fontWeight="bold">Invoice Dashboard</Text>
@@ -76,7 +93,7 @@ const Index = () => {
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
                 <IconButton aria-label="View" icon={<FaEye />} mr={2} />
-                <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} onClick={openModal} mr={2} />
+                <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} onClick={openDrawer} mr={2} />
               </Td>
             </Tr>
             <Tr>
@@ -127,96 +144,46 @@ const Index = () => {
         </Table>
       </VStack>
 
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <ModalOverlay 
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        />
-        <ModalContent 
-          minW={{ base: "90%", md: "75%" }} 
-          mx="auto" 
-          my="auto"
-        >
-          <ModalHeader>Kontierungstempel</ModalHeader>
-          <Text fontSize="md" color="gray.600">Fill in the required fields</Text>
-          <ModalCloseButton />
-          <ModalBody>
-            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+      <Drawer isOpen={isOpen} placement="right" onClose={closeDrawer} size="md">
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Kontierungstempel</DrawerHeader>
+          <DrawerBody>
+            <Progress value={(step + 1) * (100 / steps.length)} mb={4} />
+            {steps[step].type === "date" ? (
               <FormControl>
-                <FormLabel>eingegangen_am:</FormLabel>
+                <FormLabel>{steps[step].label}:</FormLabel>
                 <HStack>
                   <FaCalendarAlt color="#A0AEC0" />
                   <DatePicker
-                    selected={eingegangenAm}
-                    onChange={(date) => setEingegangenAm(date)}
+                    selected={steps[step].value}
+                    onChange={(date) => steps[step].setValue(date)}
                     placeholderText="Pick a date"
                     styles={customDatePickerStyles}
                   />
                 </HStack>
               </FormControl>
+            ) : (
               <FormControl>
-                <FormLabel>Konto:</FormLabel>
+                <FormLabel>{steps[step].label}:</FormLabel>
                 <Input type="text" />
               </FormControl>
-              <FormControl>
-                <FormLabel>Kontostelle:</FormLabel>
-                <Input type="text" />
-              </FormControl>
-              <FormControl>
-                <FormLabel>EP/VP:</FormLabel>
-                <Input type="text" />
-              </FormControl>
-              <FormControl>
-                <FormLabel>VB:</FormLabel>
-                <Input type="text" />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Belegtext:</FormLabel>
-                <Input type="text" />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Kommentar:</FormLabel>
-                <Input type="text" />
-              </FormControl>
-              <FormControl>
-                <FormLabel>fällig_am:</FormLabel>
-                <HStack>
-                  <FaCalendarAlt color="#A0AEC0" />
-                  <DatePicker
-                    selected={faelligAm}
-                    onChange={(date) => setFaelligAm(date)}
-                    placeholderText="Pick a date"
-                    styles={customDatePickerStyles}
-                  />
-                </HStack>
-              </FormControl>
-              <FormControl>
-                <FormLabel>gebucht:</FormLabel>
-                <HStack>
-                  <FaCalendarAlt color="#A0AEC0" />
-                  <DatePicker
-                    selected={gebucht}
-                    onChange={(date) => setGebucht(date)}
-                    placeholderText="Pick a date"
-                    styles={customDatePickerStyles}
-                  />
-                </HStack>
-              </FormControl>
-              <FormControl>
-                <FormLabel>Ticket Number:</FormLabel>
-                <Input type="text" />
-              </FormControl>
-            </SimpleGrid>
-          </ModalBody>
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={closeModal}>
-              Save
+            )}
+          </DrawerBody>
+          <DrawerFooter>
+            <Button variant="outline" mr={3} onClick={prevStep} isDisabled={step === 0}>
+              <FaArrowLeft />
             </Button>
-            <Button variant="ghost" onClick={closeModal}>Cancel</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+            <Button colorScheme="blue" onClick={nextStep} isDisabled={step === steps.length - 1}>
+              <FaArrowRight />
+            </Button>
+            <Button variant="ghost" onClick={closeDrawer} ml={3}>
+              Cancel
+            </Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
     </Container>
   );
 };
