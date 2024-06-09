@@ -4,6 +4,7 @@ import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort } from "react-i
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(true);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -47,7 +48,7 @@ const Index = () => {
                   <Badge colorScheme="red">Action Required</Badge>
                 </HStack>
               </Td>
-              <Td><Checkbox isChecked /></Td>
+              <Td><Checkbox isChecked={isFirstCheckboxChecked} onChange={() => setIsFirstCheckboxChecked(!isFirstCheckboxChecked)} /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
                 <IconButton aria-label="View" icon={<FaEye />} mr={2} />
