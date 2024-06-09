@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input, Flex, Spacer, Text } from "@chakra-ui/react";
+import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input, Flex, Spacer, Text, SimpleGrid } from "@chakra-ui/react";
 import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort } from "react-icons/fa";
 
 const Index = () => {
@@ -108,46 +108,48 @@ const Index = () => {
           <ModalHeader>Kontierungstempel</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <FormControl>
-              <FormLabel>Datum:</FormLabel>
-              <Input type="text" />
-            </FormControl>
-            <FormControl>
-              <FormLabel>Konto:</FormLabel>
-              <Input type="text" />
-            </FormControl>
-            <FormControl>
-              <FormLabel>Konstellee:</FormLabel>
-              <Input type="text" />
-            </FormControl>
-            <FormControl>
-              <FormLabel>EP/VP:</FormLabel>
-              <Input type="text" />
-            </FormControl>
-            <FormControl>
-              <FormLabel>VB:</FormLabel>
-              <Input type="text" />
-            </FormControl>
-            <FormControl>
-              <FormLabel>Belegtext:</FormLabel>
-              <Input type="text" />
-            </FormControl>
-            <FormControl>
-              <FormLabel>Kommentar:</FormLabel>
-              <Input type="text" />
-            </FormControl>
-            <FormControl>
-              <FormLabel>fällig am:</FormLabel>
-              <Input type="text" />
-            </FormControl>
-            <FormControl>
-              <FormLabel>gebucht am:</FormLabel>
-              <Input type="text" />
-            </FormControl>
-            <FormControl>
-              <FormLabel>Ticket Number:</FormLabel>
-              <Input type="text" />
-            </FormControl>
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+              <FormControl>
+                <FormLabel>Datum:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Konto:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Konstellee:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>EP/VP:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>VB:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Belegtext:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Kommentar:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>fällig am:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>gebucht am:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Ticket Number:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+            </SimpleGrid>
           </ModalBody>
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={closeModal}>
