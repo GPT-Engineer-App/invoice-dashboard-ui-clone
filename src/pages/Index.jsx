@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input, Flex, Spacer, Text, SimpleGrid } from "@chakra-ui/react";
 import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort } from "react-icons/fa";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
 
 const customDatePickerStyles = {
   control: (provided) => ({
@@ -19,8 +18,6 @@ const customDatePickerStyles = {
     color: "#A0AEC0",
   }),
 };
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 const Index = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -138,64 +135,64 @@ const Index = () => {
           <Text fontSize="md" color="gray.600">Fill in the required fields</Text>
           <ModalCloseButton />
           <ModalBody>
-  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-    <FormControl>
-      <FormLabel>eingegangen_am:</FormLabel>
-      <DatePicker
-        selected={new Date()}
-        onChange={(date) => console.log(date)}
-        placeholderText="Pick a date"
-        styles={customDatePickerStyles}
-      />
-    </FormControl>
-    <FormControl>
-      <FormLabel>Konto:</FormLabel>
-      <Input type="text" />
-    </FormControl>
-    <FormControl>
-      <FormLabel>Konstellee:</FormLabel>
-      <Input type="text" />
-    </FormControl>
-    <FormControl>
-      <FormLabel>EP/VP:</FormLabel>
-      <Input type="text" />
-    </FormControl>
-    <FormControl>
-      <FormLabel>VB:</FormLabel>
-      <Input type="text" />
-    </FormControl>
-    <FormControl>
-      <FormLabel>Belegtext:</FormLabel>
-      <Input type="text" />
-    </FormControl>
-    <FormControl>
-      <FormLabel>Kommentar:</FormLabel>
-      <Input type="text" />
-    </FormControl>
-    <FormControl>
-      <FormLabel>fällig_am:</FormLabel>
-      <DatePicker
-        selected={new Date()}
-        onChange={(date) => console.log(date)}
-        placeholderText="Pick a date"
-        styles={customDatePickerStyles}
-      />
-    </FormControl>
-    <FormControl>
-      <FormLabel>gebucht:</FormLabel>
-      <DatePicker
-        selected={new Date()}
-        onChange={(date) => console.log(date)}
-        placeholderText="Pick a date"
-        styles={customDatePickerStyles}
-      />
-    </FormControl>
-    <FormControl>
-      <FormLabel>Ticket Number:</FormLabel>
-      <Input type="text" />
-    </FormControl>
-  </SimpleGrid>
-</ModalBody>
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+              <FormControl>
+                <FormLabel>eingegangen_am:</FormLabel>
+                <DatePicker
+                  selected={new Date()}
+                  onChange={(date) => console.log(date)}
+                  placeholderText="Pick a date"
+                  styles={customDatePickerStyles}
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Konto:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Konstellee:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>EP/VP:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>VB:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Belegtext:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Kommentar:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>fällig_am:</FormLabel>
+                <DatePicker
+                  selected={new Date()}
+                  onChange={(date) => console.log(date)}
+                  placeholderText="Pick a date"
+                  styles={customDatePickerStyles}
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel>gebucht:</FormLabel>
+                <DatePicker
+                  selected={new Date()}
+                  onChange={(date) => console.log(date)}
+                  placeholderText="Pick a date"
+                  styles={customDatePickerStyles}
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Ticket Number:</FormLabel>
+                <Input type="text" />
+              </FormControl>
+            </SimpleGrid>
+          </ModalBody>
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={closeModal}>
               Save
