@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, FormControl, FormLabel, Input, Flex, Spacer, Text, SimpleGrid } from "@chakra-ui/react";
-import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort, FaCalendarAlt } from "react-icons/fa";
+import { Container, VStack, HStack, Flex, Spacer, Text, Button, IconButton, Badge, Checkbox, Table, Thead, Tbody, Tr, Th, Td, Drawer, DrawerOverlay, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter, FormControl, FormLabel, Input, useDisclosure, Box, Progress } from "@chakra-ui/react";
+import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort, FaCalendarAlt, FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -21,26 +21,26 @@ const customDatePickerStyles = {
 };
 
 const Index = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [step, setStep] = useState(0);
   const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(true);
   const [eingegangenAm, setEingegangenAm] = useState(null);
   const [faelligAm, setFaelligAm] = useState(null);
   const [gebucht, setGebucht] = useState(null);
 
-  const openModal = () => {
+  const nextStep = () => setStep(step + 1);
+  const prevStep = () => setStep(step - 1);
+
+  const openDrawer = () => {
     setEingegangenAm(null);
     setFaelligAm(null);
     setGebucht(null);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
+    setStep(0);
+    onOpen();
   };
 
   return (
     <Container maxW="container.xl" py={10}>
-      
       <VStack spacing={4} align="stretch">
         <Flex w="100%" align="center" mb={4} mt={4}>
           <Text fontSize="2xl" fontWeight="bold">Invoice Dashboard</Text>
@@ -76,7 +76,7 @@ const Index = () => {
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
                 <IconButton aria-label="View" icon={<FaEye />} mr={2} />
-                <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} onClick={openModal} mr={2} />
+                <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} onClick={openDrawer} mr={2} />
               </Td>
             </Tr>
             <Tr>
@@ -127,96 +127,122 @@ const Index = () => {
         </Table>
       </VStack>
 
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <ModalOverlay 
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        />
-        <ModalContent 
-          minW={{ base: "90%", md: "75%" }} 
-          mx="auto" 
-          my="auto"
-        >
-          <ModalHeader>Kontierungstempel</ModalHeader>
-          <Text fontSize="md" color="gray.600">Fill in the required fields</Text>
-          <ModalCloseButton />
-          <ModalBody>
-            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-              <FormControl>
-                <FormLabel>eingegangen_am:</FormLabel>
-                <HStack>
-                  <FaCalendarAlt color="#A0AEC0" />
-                  <DatePicker
-                    selected={eingegangenAm}
-                    onChange={(date) => setEingegangenAm(date)}
-                    placeholderText="Pick a date"
-                    styles={customDatePickerStyles}
-                  />
-                </HStack>
-              </FormControl>
-              <FormControl>
-                <FormLabel>Konto:</FormLabel>
-                <Input type="text" />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Kontostelle:</FormLabel>
-                <Input type="text" />
-              </FormControl>
-              <FormControl>
-                <FormLabel>EP/VP:</FormLabel>
-                <Input type="text" />
-              </FormControl>
-              <FormControl>
-                <FormLabel>VB:</FormLabel>
-                <Input type="text" />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Belegtext:</FormLabel>
-                <Input type="text" />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Kommentar:</FormLabel>
-                <Input type="text" />
-              </FormControl>
-              <FormControl>
-                <FormLabel>fällig_am:</FormLabel>
-                <HStack>
-                  <FaCalendarAlt color="#A0AEC0" />
-                  <DatePicker
-                    selected={faelligAm}
-                    onChange={(date) => setFaelligAm(date)}
-                    placeholderText="Pick a date"
-                    styles={customDatePickerStyles}
-                  />
-                </HStack>
-              </FormControl>
-              <FormControl>
-                <FormLabel>gebucht:</FormLabel>
-                <HStack>
-                  <FaCalendarAlt color="#A0AEC0" />
-                  <DatePicker
-                    selected={gebucht}
-                    onChange={(date) => setGebucht(date)}
-                    placeholderText="Pick a date"
-                    styles={customDatePickerStyles}
-                  />
-                </HStack>
-              </FormControl>
-              <FormControl>
-                <FormLabel>Ticket Number:</FormLabel>
-                <Input type="text" />
-              </FormControl>
-            </SimpleGrid>
-          </ModalBody>
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={closeModal}>
-              Save
+      <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="md">
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerHeader>
+            Kontierungstempel
+            <Text fontSize="md" color="gray.600">Fill in the required fields</Text>
+          </DrawerHeader>
+          <DrawerBody>
+            <Box>
+              {step === 0 && (
+                <FormControl>
+                  <FormLabel>eingegangen_am:</FormLabel>
+                  <HStack>
+                    <FaCalendarAlt color="#A0AEC0" />
+                    <DatePicker
+                      selected={eingegangenAm}
+                      onChange={(date) => setEingegangenAm(date)}
+                      placeholderText="Pick a date"
+                      styles={customDatePickerStyles}
+                    />
+                  </HStack>
+                </FormControl>
+              )}
+              {step === 1 && (
+                <FormControl>
+                  <FormLabel>Konto:</FormLabel>
+                  <Input type="text" />
+                </FormControl>
+              )}
+              {step === 2 && (
+                <FormControl>
+                  <FormLabel>Kontostelle:</FormLabel>
+                  <Input type="text" />
+                </FormControl>
+              )}
+              {step === 3 && (
+                <FormControl>
+                  <FormLabel>EP/VP:</FormLabel>
+                  <Input type="text" />
+                </FormControl>
+              )}
+              {step === 4 && (
+                <FormControl>
+                  <FormLabel>VB:</FormLabel>
+                  <Input type="text" />
+                </FormControl>
+              )}
+              {step === 5 && (
+                <FormControl>
+                  <FormLabel>Belegtext:</FormLabel>
+                  <Input type="text" />
+                </FormControl>
+              )}
+              {step === 6 && (
+                <FormControl>
+                  <FormLabel>Kommentar:</FormLabel>
+                  <Input type="text" />
+                </FormControl>
+              )}
+              {step === 7 && (
+                <FormControl>
+                  <FormLabel>fällig_am:</FormLabel>
+                  <HStack>
+                    <FaCalendarAlt color="#A0AEC0" />
+                    <DatePicker
+                      selected={faelligAm}
+                      onChange={(date) => setFaelligAm(date)}
+                      placeholderText="Pick a date"
+                      styles={customDatePickerStyles}
+                    />
+                  </HStack>
+                </FormControl>
+              )}
+              {step === 8 && (
+                <FormControl>
+                  <FormLabel>gebucht:</FormLabel>
+                  <HStack>
+                    <FaCalendarAlt color="#A0AEC0" />
+                    <DatePicker
+                      selected={gebucht}
+                      onChange={(date) => setGebucht(date)}
+                      placeholderText="Pick a date"
+                      styles={customDatePickerStyles}
+                    />
+                  </HStack>
+                </FormControl>
+              )}
+              {step === 9 && (
+                <FormControl>
+                  <FormLabel>Ticket Number:</FormLabel>
+                  <Input type="text" />
+                </FormControl>
+              )}
+            </Box>
+          </DrawerBody>
+          <DrawerFooter>
+            <Button variant="outline" mr={3} onClick={onClose}>
+              Cancel
             </Button>
-            <Button variant="ghost" onClick={closeModal}>Cancel</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+            {step > 0 && (
+              <Button leftIcon={<FaArrowLeft />} onClick={prevStep} mr={3}>
+                Previous
+              </Button>
+            )}
+            {step < 9 ? (
+              <Button rightIcon={<FaArrowRight />} onClick={nextStep}>
+                Next
+              </Button>
+            ) : (
+              <Button colorScheme="blue" onClick={onClose}>
+                Save
+              </Button>
+            )}
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
     </Container>
   );
 };
