@@ -51,7 +51,7 @@ const Index = () => {
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
                 <IconButton aria-label="View" icon={<FaEye />} mr={2} />
-                <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} onClick={openModal} />
+                <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} onClick={openModal} mr={2} />
               </Td>
             </Tr>
             <Tr>
