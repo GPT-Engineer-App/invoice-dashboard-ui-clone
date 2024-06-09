@@ -74,7 +74,7 @@ const Index = () => {
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
-                <IconButton aria-label="View" icon={<FaEye />} />
+                <IconButton aria-label="View" icon={<FaEye />} mr={2} />
               </Td>
             </Tr>
             <Tr>
@@ -85,7 +85,7 @@ const Index = () => {
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
-                <IconButton aria-label="View" icon={<FaEye />} />
+                <IconButton aria-label="View" icon={<FaEye />} mr={2} />
               </Td>
             </Tr>
             <Tr>
@@ -96,7 +96,7 @@ const Index = () => {
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
-                <IconButton aria-label="View" icon={<FaEye />} />
+                <IconButton aria-label="View" icon={<FaEye />} mr={2} />
               </Td>
             </Tr>
             <Tr>
@@ -107,7 +107,7 @@ const Index = () => {
               <Td><Checkbox /></Td>
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
-                <IconButton aria-label="View" icon={<FaEye />} />
+                <IconButton aria-label="View" icon={<FaEye />} mr={2} />
               </Td>
             </Tr>
           </Tbody>
