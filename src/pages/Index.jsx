@@ -22,22 +22,21 @@ const customDatePickerStyles = {
 
 const Index = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [step, setStep] = useState(0);
-  const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(true);
-  const [eingegangenAm, setEingegangenAm] = useState(null);
-  const [faelligAm, setFaelligAm] = useState(null);
-  const [gebucht, setGebucht] = useState(null);
+const [step, setStep] = useState(0);
+const [eingegangenAm, setEingegangenAm] = useState(null);
+const [faelligAm, setFaelligAm] = useState(null);
+const [gebucht, setGebucht] = useState(null);
 
-  const nextStep = () => setStep(step + 1);
-  const prevStep = () => setStep(step - 1);
+const nextStep = () => setStep(step + 1);
+const prevStep = () => setStep(step - 1);
 
   const openDrawer = () => {
-    setEingegangenAm(null);
-    setFaelligAm(null);
-    setGebucht(null);
-    setStep(0);
-    onOpen();
-  };
+  setEingegangenAm(null);
+  setFaelligAm(null);
+  setGebucht(null);
+  setStep(0);
+  onOpen();
+};
 
   return (
     <Container maxW="container.xl" py={10}>
@@ -128,121 +127,121 @@ const Index = () => {
       </VStack>
 
       <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="md">
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerHeader>
-            Kontierungstempel
-            <Text fontSize="md" color="gray.600">Fill in the required fields</Text>
-          </DrawerHeader>
-          <DrawerBody>
-            <Box>
-              {step === 0 && (
-                <FormControl>
-                  <FormLabel>eingegangen_am:</FormLabel>
-                  <HStack>
-                    <FaCalendarAlt color="#A0AEC0" />
-                    <DatePicker
-                      selected={eingegangenAm}
-                      onChange={(date) => setEingegangenAm(date)}
-                      placeholderText="Pick a date"
-                      styles={customDatePickerStyles}
-                    />
-                  </HStack>
-                </FormControl>
-              )}
-              {step === 1 && (
-                <FormControl>
-                  <FormLabel>Konto:</FormLabel>
-                  <Input type="text" />
-                </FormControl>
-              )}
-              {step === 2 && (
-                <FormControl>
-                  <FormLabel>Kontostelle:</FormLabel>
-                  <Input type="text" />
-                </FormControl>
-              )}
-              {step === 3 && (
-                <FormControl>
-                  <FormLabel>EP/VP:</FormLabel>
-                  <Input type="text" />
-                </FormControl>
-              )}
-              {step === 4 && (
-                <FormControl>
-                  <FormLabel>VB:</FormLabel>
-                  <Input type="text" />
-                </FormControl>
-              )}
-              {step === 5 && (
-                <FormControl>
-                  <FormLabel>Belegtext:</FormLabel>
-                  <Input type="text" />
-                </FormControl>
-              )}
-              {step === 6 && (
-                <FormControl>
-                  <FormLabel>Kommentar:</FormLabel>
-                  <Input type="text" />
-                </FormControl>
-              )}
-              {step === 7 && (
-                <FormControl>
-                  <FormLabel>fällig_am:</FormLabel>
-                  <HStack>
-                    <FaCalendarAlt color="#A0AEC0" />
-                    <DatePicker
-                      selected={faelligAm}
-                      onChange={(date) => setFaelligAm(date)}
-                      placeholderText="Pick a date"
-                      styles={customDatePickerStyles}
-                    />
-                  </HStack>
-                </FormControl>
-              )}
-              {step === 8 && (
-                <FormControl>
-                  <FormLabel>gebucht:</FormLabel>
-                  <HStack>
-                    <FaCalendarAlt color="#A0AEC0" />
-                    <DatePicker
-                      selected={gebucht}
-                      onChange={(date) => setGebucht(date)}
-                      placeholderText="Pick a date"
-                      styles={customDatePickerStyles}
-                    />
-                  </HStack>
-                </FormControl>
-              )}
-              {step === 9 && (
-                <FormControl>
-                  <FormLabel>Ticket Number:</FormLabel>
-                  <Input type="text" />
-                </FormControl>
-              )}
-            </Box>
-          </DrawerBody>
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            {step > 0 && (
-              <Button leftIcon={<FaArrowLeft />} onClick={prevStep} mr={3}>
-                Previous
-              </Button>
-            )}
-            {step < 9 ? (
-              <Button rightIcon={<FaArrowRight />} onClick={nextStep}>
-                Next
-              </Button>
-            ) : (
-              <Button colorScheme="blue" onClick={onClose}>
-                Save
-              </Button>
-            )}
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
+  <DrawerOverlay />
+  <DrawerContent>
+    <DrawerHeader>
+      Kontierungstempel
+      <Text fontSize="md" color="gray.600">Fill in the required fields</Text>
+    </DrawerHeader>
+    <DrawerBody>
+      <Box>
+        {step === 0 && (
+          <FormControl>
+            <FormLabel>eingegangen_am:</FormLabel>
+            <HStack>
+              <FaCalendarAlt color="#A0AEC0" />
+              <DatePicker
+                selected={eingegangenAm}
+                onChange={(date) => setEingegangenAm(date)}
+                placeholderText="Pick a date"
+                styles={customDatePickerStyles}
+              />
+            </HStack>
+          </FormControl>
+        )}
+        {step === 1 && (
+          <FormControl>
+            <FormLabel>Konto:</FormLabel>
+            <Input type="text" />
+          </FormControl>
+        )}
+        {step === 2 && (
+          <FormControl>
+            <FormLabel>Kontostelle:</FormLabel>
+            <Input type="text" />
+          </FormControl>
+        )}
+        {step === 3 && (
+          <FormControl>
+            <FormLabel>EP/VP:</FormLabel>
+            <Input type="text" />
+          </FormControl>
+        )}
+        {step === 4 && (
+          <FormControl>
+            <FormLabel>VB:</FormLabel>
+            <Input type="text" />
+          </FormControl>
+        )}
+        {step === 5 && (
+          <FormControl>
+            <FormLabel>Belegtext:</FormLabel>
+            <Input type="text" />
+          </FormControl>
+        )}
+        {step === 6 && (
+          <FormControl>
+            <FormLabel>Kommentar:</FormLabel>
+            <Input type="text" />
+          </FormControl>
+        )}
+        {step === 7 && (
+          <FormControl>
+            <FormLabel>fällig_am:</FormLabel>
+            <HStack>
+              <FaCalendarAlt color="#A0AEC0" />
+              <DatePicker
+                selected={faelligAm}
+                onChange={(date) => setFaelligAm(date)}
+                placeholderText="Pick a date"
+                styles={customDatePickerStyles}
+              />
+            </HStack>
+          </FormControl>
+        )}
+        {step === 8 && (
+          <FormControl>
+            <FormLabel>gebucht:</FormLabel>
+            <HStack>
+              <FaCalendarAlt color="#A0AEC0" />
+              <DatePicker
+                selected={gebucht}
+                onChange={(date) => setGebucht(date)}
+                placeholderText="Pick a date"
+                styles={customDatePickerStyles}
+              />
+            </HStack>
+          </FormControl>
+        )}
+        {step === 9 && (
+          <FormControl>
+            <FormLabel>Ticket Number:</FormLabel>
+            <Input type="text" />
+          </FormControl>
+        )}
+      </Box>
+    </DrawerBody>
+    <DrawerFooter>
+      <Button variant="outline" mr={3} onClick={onClose}>
+        Cancel
+      </Button>
+      {step > 0 && (
+        <Button leftIcon={<FaArrowLeft />} onClick={prevStep} mr={3}>
+          Previous
+        </Button>
+      )}
+      {step < 9 ? (
+        <Button rightIcon={<FaArrowRight />} onClick={nextStep}>
+          Next
+        </Button>
+      ) : (
+        <Button colorScheme="blue" onClick={onClose}>
+          Save
+        </Button>
+      )}
+    </DrawerFooter>
+  </DrawerContent>
+</Drawer>
     </Container>
   );
 };
