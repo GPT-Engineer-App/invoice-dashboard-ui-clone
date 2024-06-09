@@ -139,7 +139,7 @@ const Index = () => {
           my="auto"
         >
           <ModalHeader>Kontierungstempel</ModalHeader>
-          <Text fontSize="md" color="gray.600">Fill in the required fields</Text>
+          <Text fontSize="md" color="gray.600" mt={2}>Fill in the required fields</Text>
           <ModalCloseButton />
           <ModalBody>
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
