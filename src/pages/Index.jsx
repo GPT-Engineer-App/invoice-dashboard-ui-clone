@@ -104,8 +104,19 @@ const Index = () => {
       </VStack>
 
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <ModalOverlay />
-        <ModalContent minW={{ base: "90%", md: "75%" }} mx="auto">
+        <ModalOverlay 
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        />
+        <ModalContent 
+          minW={{ base: "90%", md: "75%" }} 
+          mx="auto" 
+          my="auto" 
+          display="flex" 
+          alignItems="center" 
+          justifyContent="center"
+        >
           <ModalHeader>Kontierungstempel</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
