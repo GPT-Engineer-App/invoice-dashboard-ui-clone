@@ -111,7 +111,7 @@ const Index = () => {
                     customInput={
                       <Flex align="center">
                         <InputLeftElement pointerEvents="none" children={<FaCalendarAlt color="gray.300" />} />
-                        <Input />
+                        <Input ml={8} />
                       </Flex>
                     }
                     dateFormat="dd/MM/yyyy"
@@ -129,7 +129,7 @@ const Index = () => {
                     customInput={
                       <Flex align="center">
                         <InputLeftElement pointerEvents="none" children={<FaCalendarAlt color="gray.300" />} />
-                        <Input />
+                        <Input ml={8} />
                       </Flex>
                     }
                     dateFormat="dd/MM/yyyy"
@@ -147,7 +147,7 @@ const Index = () => {
                     customInput={
                       <Flex align="center">
                         <InputLeftElement pointerEvents="none" children={<FaCalendarAlt color="gray.300" />} />
-                        <Input />
+                        <Input ml={8} />
                       </Flex>
                     }
                     dateFormat="dd/MM/yyyy"
