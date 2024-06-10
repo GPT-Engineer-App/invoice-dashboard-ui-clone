@@ -96,7 +96,7 @@ const Index = () => {
         </Table>
         <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
           <DrawerOverlay />
-          <DrawerContent minH="100vh" w="33vw">
+          <DrawerContent minH="100vh" w="45vw">
             <DrawerCloseButton />
             <DrawerHeader>Action Required</DrawerHeader>
             <DrawerBody>
