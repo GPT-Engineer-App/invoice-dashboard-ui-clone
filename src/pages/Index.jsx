@@ -11,10 +11,7 @@ const Index = () => {
         <Flex w="100%" align="center" mb={4} mt={4}>
           <Text fontSize="2xl" fontWeight="bold">Invoice Dashboard</Text>
           <Spacer />
-          <HStack spacing={4}>
-            <Button leftIcon={<FaFilter />} colorScheme="teal" variant="solid">Filter</Button>
-            <Button leftIcon={<FaSort />} colorScheme="teal" variant="solid">Sort</Button>
-          </HStack>
+          
         </Flex>
         <Table variant="simple" size="lg">
           <Thead>
