@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Flex, Spacer, Text, Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button } from "@chakra-ui/react";
-import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort } from "react-icons/fa";
+import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Flex, Spacer, Text, Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, InputGroup, InputLeftElement, Input, FormControl, FormLabel } from "@chakra-ui/react";
+import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort, FaCalendarAlt } from "react-icons/fa";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Index = () => {
   const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(true);
+  const [eingegangenAm, setEingegangenAm] = useState(null);
+  const [faelligAm, setFaelligAm] = useState(null);
+  const [gebucht, setGebucht] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -95,7 +100,45 @@ const Index = () => {
             <DrawerCloseButton />
             <DrawerHeader>Action Required</DrawerHeader>
             <DrawerBody>
-              {/* Add content for the drawer here */}
+              <FormControl id="eingegangen_am" mb={4}>
+                <FormLabel>Eingegangen am</FormLabel>
+                <InputGroup>
+                  <InputLeftElement pointerEvents="none" children={<FaCalendarAlt color="gray.300" />} />
+                  <DatePicker
+                    selected={eingegangenAm}
+                    onChange={(date) => setEingegangenAm(date)}
+                    placeholderText="Pick a date"
+                    customInput={<Input />}
+                    dateFormat="dd/MM/yyyy"
+                  />
+                </InputGroup>
+              </FormControl>
+              <FormControl id="faellig_am" mb={4}>
+                <FormLabel>Fällig am</FormLabel>
+                <InputGroup>
+                  <InputLeftElement pointerEvents="none" children={<FaCalendarAlt color="gray.300" />} />
+                  <DatePicker
+                    selected={faelligAm}
+                    onChange={(date) => setFaelligAm(date)}
+                    placeholderText="Pick a date"
+                    customInput={<Input />}
+                    dateFormat="dd/MM/yyyy"
+                  />
+                </InputGroup>
+              </FormControl>
+              <FormControl id="gebucht" mb={4}>
+                <FormLabel>Gebucht</FormLabel>
+                <InputGroup>
+                  <InputLeftElement pointerEvents="none" children={<FaCalendarAlt color="gray.300" />} />
+                  <DatePicker
+                    selected={gebucht}
+                    onChange={(date) => setGebucht(date)}
+                    placeholderText="Pick a date"
+                    customInput={<Input />}
+                    dateFormat="dd/MM/yyyy"
+                  />
+                </InputGroup>
+              </FormControl>
             </DrawerBody>
           </DrawerContent>
         </Drawer>
