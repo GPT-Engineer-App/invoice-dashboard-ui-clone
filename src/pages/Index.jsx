@@ -108,7 +108,12 @@ const Index = () => {
                     selected={eingegangenAm}
                     onChange={(date) => setEingegangenAm(date)}
                     placeholderText="Pick a date"
-                    customInput={<Input />}
+                    customInput={
+                      <Flex align="center">
+                        <InputLeftElement pointerEvents="none" children={<FaCalendarAlt color="gray.300" />} />
+                        <Input />
+                      </Flex>
+                    }
                     dateFormat="dd/MM/yyyy"
                   />
                 </InputGroup>
@@ -121,7 +126,12 @@ const Index = () => {
                     selected={faelligAm}
                     onChange={(date) => setFaelligAm(date)}
                     placeholderText="Pick a date"
-                    customInput={<Input />}
+                    customInput={
+                      <Flex align="center">
+                        <InputLeftElement pointerEvents="none" children={<FaCalendarAlt color="gray.300" />} />
+                        <Input />
+                      </Flex>
+                    }
                     dateFormat="dd/MM/yyyy"
                   />
                 </InputGroup>
@@ -134,7 +144,12 @@ const Index = () => {
                     selected={gebucht}
                     onChange={(date) => setGebucht(date)}
                     placeholderText="Pick a date"
-                    customInput={<Input />}
+                    customInput={
+                      <Flex align="center">
+                        <InputLeftElement pointerEvents="none" children={<FaCalendarAlt color="gray.300" />} />
+                        <Input />
+                      </Flex>
+                    }
                     dateFormat="dd/MM/yyyy"
                   />
                 </InputGroup>
