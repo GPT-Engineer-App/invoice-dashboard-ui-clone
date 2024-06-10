@@ -40,7 +40,7 @@ const Index = () => {
               <Td>
                 <IconButton aria-label="Delete" icon={<FaTrash />} mr={2} />
                 <IconButton aria-label="View" icon={<FaEye />} mr={2} />
-                <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} mr={2} />
+                <IconButton aria-label="Warning" icon={<FaExclamationTriangle />} mr={2} onClick={() => { console.log("Icon clicked"); onOpen(); }} />
               </Td>
             </Tr>
             <Tr>
