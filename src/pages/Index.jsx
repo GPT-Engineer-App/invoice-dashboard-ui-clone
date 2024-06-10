@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Flex, Spacer, Text } from "@chakra-ui/react";
+import { Container, Table, Thead, Tbody, Tr, Th, Td, Checkbox, IconButton, Badge, VStack, HStack, Flex, Spacer, Text, Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button } from "@chakra-ui/react";
 import { FaExclamationTriangle, FaTrash, FaEye, FaFilter, FaSort } from "react-icons/fa";
 
 const Index = () => {
   const [isFirstCheckboxChecked, setIsFirstCheckboxChecked] = useState(true);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Container maxW="container.xl" py={10}>
@@ -32,7 +33,7 @@ const Index = () => {
               <Td>
                 <HStack spacing={2}>
                   <Badge colorScheme="blue">empfangen</Badge>
-                  <Badge colorScheme="red">Action Required</Badge>
+                  <Badge colorScheme="red" cursor="pointer" onClick={onOpen}>Action Required</Badge>
                 </HStack>
               </Td>
               <Td><Checkbox isChecked={isFirstCheckboxChecked} onChange={() => setIsFirstCheckboxChecked(!isFirstCheckboxChecked)} /></Td>
@@ -88,6 +89,16 @@ const Index = () => {
             </Tr>
           </Tbody>
         </Table>
+        <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+          <DrawerOverlay />
+          <DrawerContent minH="100vh" w="33vw">
+            <DrawerCloseButton />
+            <DrawerHeader>Action Required</DrawerHeader>
+            <DrawerBody>
+              {/* Add content for the drawer here */}
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
       </VStack>
     </Container>
   );
